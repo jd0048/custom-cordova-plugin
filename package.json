@@ -1,0 +1,23 @@
+{
+  "name": "cordova-plugin-mycustomcordovaplugin",
+  "version": "1.0.2",
+  "description": "This is demo for custome cordova plugin ",
+  "cordova": {
+    "id": "cordova-plugin-mycustomcordovaplugin",
+    "platforms": [
+      "ios",
+      "android"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jd0048/custom-cordova-plugin.git"
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-ios",
+    "cordova-android"
+  ],
+  "author": "Chavda jaydeep",
+  "license": "ISC"
+}
