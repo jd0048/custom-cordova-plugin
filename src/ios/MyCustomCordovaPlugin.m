@@ -26,13 +26,31 @@
                                 handler:^(UIAlertAction * action) {
                                 }];
     [alert addAction:yesButton];
-    [self presentViewController:alert animated:YES completion:nil];
+        [self presentAlertcontroller:alert];
         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:echo];
     } else {
         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
     }
 
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+}
+-(UIViewController *)getTopPresentedViewController {
+    UIViewController *presentingViewController = self.viewController;
+    if (presentingViewController.view.window != [UIApplication sharedApplication].keyWindow){
+        presentingViewController = [UIApplication sharedApplication].keyWindow.rootViewController;
+    }
+    
+    while (presentingViewController.presentedViewController != nil && ![presentingViewController.presentedViewController isBeingDismissed]){
+        presentingViewController = presentingViewController.presentedViewController;
+    }
+    return presentingViewController;
+}
+
+-(void)presentAlertcontroller:(UIAlertController *)alert {
+    
+    [self.getTopPresentedViewController presentViewController:alert animated:YES completion:^{
+    }];
+    
 }
 
 @end
